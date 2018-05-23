@@ -1,7 +1,5 @@
 package S4;
-/**
- * Created by yyawesome on 15/11/20.
- */
+
 public class Parameters {
 
     public static String userpath =  "time_series_data/";
@@ -28,21 +26,21 @@ public class Parameters {
 
     public static double[][] para = { 
     	//MaxLength, MinLength, alpha, C
-    	{96,24,3,1}, //Adiac * 
-        {120,30,1.6,10},  //Beef  * 
-        {40,10,2,1},   //ChlorineConcentration * 
-        {48,12,1.3,10},    //Coffee * 
-        {160,40,0.5,10},   //DiatomSizeReduction 
-        {80,20,0.4,10},    //ECGFiveDays *
-        {80,10,1.5,10},  //FaceFour *     
-    	{40,20,1.5,10},    //GunPoint *  
-        {16,8,0.8,10}, //ItalyPowerDemand *
-        {240,30,1,10}, //Lighting7 * 
-        {49,12,0.8,10},  //MoteStrain * 
-        {25,25,0.8,10},   //SonyAIBORobotSurface * 
-        {90,90,1.5,10},  //Symbols * 
-        {30,30,1,10},  //SyntheticControl * 
-        {40,20,3.5,10},     //Trace *
-        {24,6,0.5,10},  //TwoLeadECG * 
+        {104,26,3,1}, //Adiac * 104,26 0.665
+        {120,30,1,10},  //Beef  * 120,30,1 86.7
+        {40,10,0.5,1},   //ChlorineConcentration * 0.5,76.8 1,75.8 1.5,75.6
+        {48,12,1,10},    //Coffee * 
+        {140,70,0.5,10},   //DiatomSizeReduction 140,70,0.5 95.1
+        {80,20,0,10},    //ECGFiveDays * 80,20,0
+        {80,10,1,10},  //FaceFour *     
+    	{40,10,2,10},    //GunPoint *  80,20,2 99.3
+        {16,8,0.5,10}, //ItalyPowerDemand *16,8,0.5 95
+        {120,30,1.5,10}, //Lighting7 * 
+        {50,6,0,10},  //MoteStrain * 
+        {48,6,0.5,10},   //SonyAIBORobotSurface * 48,6,0.5 94
+        {90,45,1,10},  //Symbols * 
+        {30,30,0,10},  //SyntheticControl * 30,30,0 0.97
+        {40,20,3,10},     //Trace *
+        {24,6,0.5,10},  //TwoLeadECG * 24,6,0.5 97.7
     };
 }

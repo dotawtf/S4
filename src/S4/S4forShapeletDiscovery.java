@@ -73,7 +73,14 @@ public class S4forShapeletDiscovery {
         	        			number++;
     	        			}
     	        		}
-    	        		
+    	        		ArrayList<Integer> wave = new ArrayList<>();
+    	        		int direction = -1;
+    	        		for(int i=0; i<idp_index.size()-1; i++){
+    	        			if((diffAB[i+1]-diffAB[i])*direction>0){
+    	        				direction*=-1;
+    	        				if(direction==1) wave.add(i);
+    	        			}
+    	        		}
     	        		double mean = sum/number;
     	        		double sigma = 0;
     	        		for(int i=0; i<idp_index.size(); i++){
@@ -81,11 +88,13 @@ public class S4forShapeletDiscovery {
     	        			sigma+= (diffAB[i]-mean)*(diffAB[i]-mean);
     	        		}
     	        		sigma = Math.sqrt(sigma/number);
+//    	        		double threshold = mean+alpha*sigma; original
     	        		double threshold = mean+alpha*sigma;
     	        		if(sigma == 0) threshold = mean;
     	        		for(int i=0; i<idp_index.size(); i++){
     	        			if(Double.isNaN(diffAB[i])) continue;
-    	        			if(diffAB[i] >= threshold){
+//    	        			if(diffAB[i] >= threshold){
+    	        			if(diffAB[i] >= threshold && wave.contains(i)){
     	        					candidataShapelets.add(sA.normalize(idp_index.get(i), Len));
     	        			}
     	        		}
@@ -95,7 +104,6 @@ public class S4forShapeletDiscovery {
     		class1.clear();
     		rest.clear();
     	}
-        System.out.println("候选集大小："+candidataShapelets.size());
         Feature[][] features = new Feature[data.getData().size()][candidataShapelets.size()];
         double[] labels=new double[data.getData().size()];
         for(int i=0;i<data.getData().size();i++)
@@ -138,7 +146,6 @@ public class S4forShapeletDiscovery {
             if(!zerofeatures.contains(i))
                 shapelets.put(candidataShapelets.get(i-1),i);
         }
-        System.out.println("    Useful Shapelets:"+shapelets.size());
     }
 
     public double[] calculateISSV_multi(Sample TA, Sample TB, int Len) {
